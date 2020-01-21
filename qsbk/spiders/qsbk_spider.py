@@ -13,7 +13,7 @@ class QsbkSpiderSpider(scrapy.Spider):
         node_list = response.xpath("//a[@href='/weimei/48095.html']")
         for node in node_list:
             item = QsbkItem()
-            name = node.xpath("img/@src/text()").extract()
-            item['url'] = name
+            name = node.xpath("img/@src").extract()
+            item['url'] = name[0]
             yield item
         print('*' * 40)

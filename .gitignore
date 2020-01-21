@@ -1,4 +1,6 @@
-.idea/
-*.iml
-build/
-target/
+qsbk/.idea/
+qsbk/*.iml
+qsbk/build/
+qsbk/target/
+qsbk/__pycache__/
+qsbk/spiders/__pycache__/

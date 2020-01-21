@@ -4,19 +4,16 @@ from qsbk.items import QsbkItem
 
 class QsbkSpiderSpider(scrapy.Spider):
     name = 'qbspider'
-    allowed_domains = ['itcast.cn']
-    start_urls = ['http://www.itcast.cn/channel/teacher.shtml']
+    allowed_domains = ['aitaotu.com']
+    start_urls = ['https://www.aitaotu.com/weimei/48593.html']
 
     def parse(self, response):
         print('*' * 40)
-        node_list = response.xpath("//div[@class='li_txt']")
+        # node_list = response.xpath("//div[@id='big_pic']")
+        node_list = response.xpath("//a[@href='/weimei/48095.html']")
         for node in node_list:
             item = QsbkItem()
-            name = node.xpath("./h3/text()").extract()
-            title = node.xpath("./h4/text()").extract()
-            info = node.xpath("./p/text()").extract()
-            item['name'] = name
-            item['title'] = title
-            item['info'] = info
+            name = node.xpath("img/@src/text()").extract()
+            item['url'] = name
             yield item
         print('*' * 40)
